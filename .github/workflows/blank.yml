@@ -39,7 +39,7 @@ jobs:
       mkdir sushant
       # docker info
       # docker ps -a
-       user: root  # Run this step as the root user
+      # user: root  # Run this step as the root user
 
    - name: SSH into VM and Manage Containers
      run: |
