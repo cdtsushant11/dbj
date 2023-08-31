@@ -34,11 +34,11 @@ jobs:
        version: '>= 442.0.0'
    - id: 'gcloud'    
    - name: 'gcloud'
-     run: | 
+     run: |- 
        gcloud config set project still-descent-38900 
 
-   - name: Run Docker Commands as Root
-     run: |
+   # - name: Run Docker Commands as Root
+   #   run: |
       # Run your Docker commands as the root user here
       # mkdir sushant
       # docker info
