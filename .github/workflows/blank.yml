@@ -1,5 +1,4 @@
-name: Run Commands in Cloud Shell
-
+name: github-runner
 on:
  push:
   branches:
@@ -8,7 +7,7 @@ on:
 jobs:
  setup-prepare-list:
   name: Setup, Prepare,
-  runs-on: github-runner
+  runs-on: self-hosted
 
   permissions:
    contents: 'read'
