@@ -22,7 +22,8 @@ jobs:
    #   run: docker build -t state-level-tool:${{ github.sha }} .
 
    - name: Authenticate with Google Cloud using WIF
-     uses: 'google-github-actions/auth@v0.4.2'
+     id: 'auth'
+     uses: 'google-github-actions/auth@v1'
      with:
        token_format: 'access_token'
        # create_credentials_file: true
@@ -36,8 +37,7 @@ jobs:
        version: '>= 442.0.0'
    - id: 'gcloud'    
      name: 'gcloud'
-     run: |
-       gcloud auth login
+     run: |-
        gcloud config set project still-descent-38900 
 
    # - name: Run Docker Commands as Root
