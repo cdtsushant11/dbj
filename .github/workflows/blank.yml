@@ -32,10 +32,10 @@ jobs:
      uses: 'google-github-actions/setup-gcloud@v1'
      with:
        version: '>= 442.0.0'    
-   # - name: Set Project ID
-   #   run: |
-   #    echo "Project ID: $PROJECT_ID"
-   #    gcloud config set account $service_account
+   - name: Set Project ID
+     run: |
+       echo "Project ID: $PROJECT_ID"
+       gcloud config set project $PROJECT_ID  
 
    - name: Run Docker Commands as Root
      run: |
@@ -45,13 +45,13 @@ jobs:
       # docker ps -a
       # user: root  # Run this step as the root user
 
-   - name: SSH into VM and Manage Containers
-     run: |
-      INSTANCE_NAME="testing-vm"
-      ZONE="asia-south1-b"
+   # - name: SSH into VM and Manage Containers
+   #   run: |
+   #    INSTANCE_NAME="testing-vm"
+   #    ZONE="asia-south1-b"
 
       # SSH into the VM
-      gcloud compute ssh $INSTANCE_NAME --zone=$ZONE --command="
+      # gcloud compute ssh $INSTANCE_NAME --zone=$ZONE --command="
         # Delete the current container
         # docker stop state-level-tool && docker rm state-level-tool
 
