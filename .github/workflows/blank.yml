@@ -49,7 +49,7 @@ jobs:
       # user: root  # Run this step as the root user
 
    # - name: SSH into VM and Manage Containers
-   #   run: |
+   #   run: |.
    #    INSTANCE_NAME="testing-vm"
    #    ZONE="asia-south1-b"
 
