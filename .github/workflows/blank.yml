@@ -40,7 +40,7 @@ jobs:
    - name: Run Docker Commands as Root
      run: |
       # Run your Docker commands as the root user here
-      mkdir sushant
+      # mkdir sushant
       # docker info
       # docker ps -a
       # user: root  # Run this step as the root user
