@@ -8,7 +8,7 @@ on:
 jobs:
  setup-prepare-list:
   name: Setup, Prepare,
-  runs-on: [self-hosted, linux, ARM64]
+  runs-on: github-runner
 
   permissions:
    contents: 'read'
