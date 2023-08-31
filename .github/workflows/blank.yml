@@ -31,10 +31,10 @@ jobs:
    - name: 'Set up Cloud SDK'
      uses: 'google-github-actions/setup-gcloud@v1'
      with:
-       version: '>= 442.0.0'    
-   - name: Set Project ID
-     run: |
-       echo "Project ID: $PROJECT_ID"
+       version: '>= 442.0.0'
+   - id: 'gcloud'    
+   - name: 'gcloud'
+     run: 
        gcloud config set project still-descent-38900 
 
    - name: Run Docker Commands as Root
