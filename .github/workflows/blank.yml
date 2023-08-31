@@ -22,12 +22,13 @@ jobs:
    #   run: docker build -t state-level-tool:${{ github.sha }} .
 
    - name: Authenticate with Google Cloud using WIF
-     uses: 'google-github-actions/auth@v1'
+     uses: 'google-github-actions/auth@v0.4.2'
      with:
        token_format: 'access_token'
-       create_credentials_file: true
+       # create_credentials_file: true
        workload_identity_provider: 'projects/https://iam.googleapis.com/projects/5375409120/locations/global/workloadIdentityPools/my-pool/providers/github/locations/global/workloadIdentityPools/my-pool/providers/github'
        service_account: 'packer-gcp@still-descent-389006.iam.gserviceaccount.com'
+       access_token_lifetime: '300s'
        
    - name: 'Set up Cloud SDK'
      uses: 'google-github-actions/setup-gcloud@v1'
