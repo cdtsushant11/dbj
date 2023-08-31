@@ -1,0 +1,56 @@
+name: Run Commands in Cloud Shell
+
+on:
+ push:
+  branches:
+   - main
+
+jobs:
+ setup-prepare-list:
+  name: Setup, Prepare,
+  runs-on: [self-hosted, linux, ARM64]
+
+  permissions:
+   contents: 'read'
+   id-token: 'write'
+
+  steps:
+   - name: Checkout
+     uses: actions/checkout@v2
+
+   # - name: Build Docker image
+   #   run: docker build -t state-level-tool:${{ github.sha }} .
+
+   - name: Authenticate with Google Cloud using WIF
+     uses: google-github-actions/auth@v1
+     with:
+      token_format: access_token
+      workload_identity_provider: ${{ secrets.WORKLOAD_IDENTITY_PROVIDER_ID }}
+      service_account: ${{ secrets.GCP_SERVICE_ACCOUNT }}
+
+   - name: Set Project ID
+     run: |
+      PROJECT_ID=${{ secrets.GCP_PROJECT_ID }}
+      gcloud config set project $PROJECT_ID
+
+   - name: Run Docker Commands as Root
+     run: |
+      # Run your Docker commands as the root user here
+      mkdir sushant
+      # docker info
+      # docker ps -a
+      # user: root  # Run this step as the root user
+
+   - name: SSH into VM and Manage Containers
+     run: |
+      INSTANCE_NAME="testing-vm"
+      ZONE="asia-south1-b"
+
+      # SSH into the VM
+      gcloud compute ssh $INSTANCE_NAME --zone=$ZONE --command="
+        # Delete the current container
+        # docker stop state-level-tool && docker rm state-level-tool
+
+        # # Start a new container with the image from GitHub Actions
+        # docker run -d --name state-level-tool -p 4000:4000 state-level-tool
+      "
