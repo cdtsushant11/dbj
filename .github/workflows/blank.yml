@@ -27,7 +27,11 @@ jobs:
        create_credentials_file: true
        workload_identity_provider: 'projects/https://iam.googleapis.com/projects/5375409120/locations/global/workloadIdentityPools/my-pool/providers/github/locations/global/workloadIdentityPools/my-pool/providers/github'
        service_account: 'packer-gcp@still-descent-389006.iam.gserviceaccount.com'
-
+       
+   - name: 'Set up Cloud SDK'
+     uses: 'google-github-actions/setup-gcloud@v1'
+     with:
+       version: '>= 442.0.0'    
    # - name: Set Project ID
    #   run: |
    #    echo "Project ID: $PROJECT_ID"
