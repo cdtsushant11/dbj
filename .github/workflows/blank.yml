@@ -28,10 +28,10 @@ jobs:
        workload_identity_provider: 'projects/still-descent-389006/locations/global/workloadIdentityPools/my-pool/providers/github'
        service_account: 'packer-gcp@still-descent-389006.iam.gserviceaccount.com'
 
-   - name: Set Project ID
-     run: |
-      echo "Project ID: $PROJECT_ID"
-      gcloud config set account $service_account
+   # - name: Set Project ID
+   #   run: |
+   #    echo "Project ID: $PROJECT_ID"
+   #    gcloud config set account $service_account
 
    - name: Run Docker Commands as Root
      run: |
@@ -39,7 +39,7 @@ jobs:
       mkdir sushant
       # docker info
       # docker ps -a
-      # user: root  # Run this step as the root user
+       user: root  # Run this step as the root user
 
    - name: SSH into VM and Manage Containers
      run: |
