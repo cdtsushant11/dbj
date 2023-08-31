@@ -8,7 +8,8 @@ jobs:
  setup-prepare-list:
   name: Setup, Prepare,
   runs-on: self-hosted
-
+  env:
+     PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
   permissions:
    contents: 'read'
    id-token: 'write'
@@ -29,7 +30,7 @@ jobs:
 
    - name: Set Project ID
      run: |
-      PROJECT_ID = "still-descent-389006"
+      echo "Project ID: $PROJECT_ID
       gcloud config set project $PROJECT_ID
 
    - name: Run Docker Commands as Root
