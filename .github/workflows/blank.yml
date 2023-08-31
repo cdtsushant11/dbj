@@ -21,11 +21,11 @@ jobs:
    #   run: docker build -t state-level-tool:${{ github.sha }} .
 
    - name: Authenticate with Google Cloud using WIF
-     uses: google-github-actions/auth@v1
+     uses: 'google-github-actions/auth@v1'
      with:
-      token_format: access_token
-      workload_identity_provider: ${{ secrets.WORKLOAD_IDENTITY_PROVIDER_ID }}
-      service_account: ${{ secrets.GCP_SERVICE_ACCOUNT }}
+       create_credentials_file: true
+       workload_identity_provider: 'projects/still-descent-389006/locations/global/workloadIdentityPools/my-pool/providers/github'
+       service_account: 'packer-gcp@still-descent-389006.iam.gserviceaccount.com'
 
    - name: Set Project ID
      run: |
