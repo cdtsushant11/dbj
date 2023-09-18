@@ -59,6 +59,6 @@ jobs:
         # Delete the current container
         # docker stop state-level-tool && docker rm state-level-tool
 
-        # # Start a new container with the image from GitHub Actions
+        # # Start a new container with the image from GitHub Action
         # docker run -d --name state-level-tool -p 4000:4000 state-level-tool
       
