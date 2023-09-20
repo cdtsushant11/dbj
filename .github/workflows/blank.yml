@@ -38,7 +38,7 @@ jobs:
    - id: 'gcloud'    
      name: 'gcloud'
      run: |-
-       gcloud config set project $PROJECT_ID
+       gcloud config set project PROJECT_ID
        gcloud compute instances list
 
    # - name: Run Docker Commands as Root
